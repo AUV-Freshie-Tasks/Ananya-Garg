@@ -4,6 +4,7 @@ using namespace std;
 
 Matrix inverse(const Matrix& A) {
 
+    //create a matrix of nX2n size of the form [ A | I ]
     int n = A.rows;
     Matrix aug(n, 2*n);
 
@@ -11,14 +12,14 @@ Matrix inverse(const Matrix& A) {
         for (int j=0;j<n;j++) aug.m[i][j] = A.m[i][j];
         for (int j=0;j<n;j++) aug.m[i][n+j] = (i==j);
     }
-
+    //pick a pivot
     for (int c=0;c<n;c++) {
         int p = c;
         for (int r=c+1;r<n;r++)
             if (abs(aug.m[r][c]) > abs(aug.m[p][c]))
                 p = r;
 
-
+    
         swap(aug.m[p], aug.m[c]);
 
         // Make pivot = 1
