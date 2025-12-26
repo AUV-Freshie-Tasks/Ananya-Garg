@@ -1,7 +1,7 @@
 #ifndef LU_H
 #define LU_H
 
-#include "Matrix.h"
+#include "matrix.h"
 #include <vector>
 using namespace std;
 
