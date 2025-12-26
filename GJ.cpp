@@ -26,7 +26,7 @@ Matrix inverse(const Matrix& A) {
         for (int j=0;j<2*n;j++)
             aug.m[c][j] /= piv;
 
-        // Eliminate other rows
+        // Eliminate 
         for (int r=0;r<n;r++) {
             if (r == c) continue;
             double f = aug.m[r][c];
