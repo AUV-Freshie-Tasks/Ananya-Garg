@@ -1,4 +1,4 @@
-#include "GaussJordan.h"
+#include "GJ.h"
 #include <cmath>
 using namespace std;
 
