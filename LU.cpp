@@ -19,7 +19,7 @@ LU decomp(const Matrix& A) {
 
         int mx = c;
         for (int r=c+1;r<n;r++)
-            if (fabs(U.m[r][c]) > fabs(U.m[mx][c]))
+            if (abs(U.m[r][c]) > abs(U.m[mx][c]))
                 mx = r;
 
         swap(U.m[mx], U.m[c]);
