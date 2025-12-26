@@ -7,13 +7,10 @@ using namespace std;
 
 struct LU {
     Matrix L, U;
-    vector<int> perm;   // permutation vector for row swaps
+    vector<int> perm;   
 };
 
-// compute LU decomposition (with partial pivoting)
 LU decomp(const Matrix& A);
-
-// solve Ax = b using LU
 Matrix solveLU(const LU& lu, const Matrix& b);
 
 #endif
