@@ -15,7 +15,7 @@ Matrix inverse(const Matrix& A) {
     for (int c=0;c<n;c++) {
         int p = c;
         for (int r=c+1;r<n;r++)
-            if (fabs(aug.m[r][c]) > fabs(aug.m[p][c]))
+            if (abs(aug.m[r][c]) > abs(aug.m[p][c]))
                 p = r;
 
 
