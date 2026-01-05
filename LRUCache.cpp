@@ -8,10 +8,11 @@ bool LRUCache::has(string key) {
     return mp.find(key) != mp.end();
 }
 
-LU LRUCache::get(string key) {
+LU<double> LRUCache::get(string key) {
    
     if (mp.find(key) == mp.end()) {
-        LU empty;
+        cout << key << endl;
+        LU<double> empty;
         return empty;
     }
 
@@ -24,7 +25,7 @@ LU LRUCache::get(string key) {
     return it->second.first;
 }
 
-void LRUCache::put(string key, LU val) {
+void LRUCache::put(string key, LU<double> val) {
     
     if (mp.find(key) != mp.end()) {
         auto it = mp.find(key);
@@ -52,4 +53,3 @@ void LRUCache::clear() {
     mp.clear();
     
 }
-
