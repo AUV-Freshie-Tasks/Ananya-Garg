@@ -1,18 +1,17 @@
+#ifndef LU_TPP
+#define LU_TPP
+
 #include "LU.h"
-#include <cmath>
+#include <iostream>
 
 using namespace std;
 
-LU decomp(const Matrix& A) {
-   
-    if (A.rows != A.cols) {
-        cout << "LU needs square matrix\n";
-        return LU();
-    }
-    
+template<typename T>
+LU<T> decomp(const Matrix<T>& A) {
+
     int n = A.rows;
-    Matrix U = A;
-    Matrix L(n,n);
+    Matrix<T> U = A;
+    Matrix<T> L(n,n);
     vector<int> p(n);
 
     for (int i=0;i<n;i++) {
@@ -27,6 +26,11 @@ LU decomp(const Matrix& A) {
             if (abs(U.m[r][c]) > abs(U.m[mx][c]))
                 mx = r;
 
+        if (U.m[mx][c] == 0) {
+            cout << "Singular matrix\n";
+            return LU<T>();
+        }
+
         swap(U.m[mx], U.m[c]);
         swap(p[mx], p[c]);
 
@@ -34,7 +38,7 @@ LU decomp(const Matrix& A) {
             swap(L.m[mx][j], L.m[c][j]);
 
         for (int r=c+1;r<n;r++) {
-            double mul = U.m[r][c] / U.m[c][c];
+            T mul = U.m[r][c] / U.m[c][c];
             L.m[r][c] = mul;
 
             for (int j=c;j<n;j++)
@@ -42,34 +46,39 @@ LU decomp(const Matrix& A) {
         }
     }
 
-    LU lu;
+    LU<T> lu;
     lu.L = L;
     lu.U = U;
     lu.perm = p;
     return lu;
 }
 
-Matrix solveLU(const LU& lu, const Matrix& b) {
-    int n = lu.L.rows;
+template<typename T>
+Matrix<T> solveLU(const LU<T>& lu, const Matrix<T>& b) {
 
-    Matrix pb(n,1);
+    int n = lu.L.rows;
+    Matrix<T> pb(n,1);
+
     for (int i=0;i<n;i++)
         pb.m[i][0] = b.m[lu.perm[i]][0];
 
-    Matrix y(n,1);
+    Matrix<T> y(n,1);
     for (int i=0;i<n;i++) {
-        double s = pb.m[i][0];
-        for (int j=0;j<i;j++) s -= lu.L.m[i][j] * y.m[j][0];
+        T s = pb.m[i][0];
+        for (int j=0;j<i;j++)
+            s -= lu.L.m[i][j] * y.m[j][0];
         y.m[i][0] = s;
     }
 
-    Matrix x(n,1);
+    Matrix<T> x(n,1);
     for (int i=n-1;i>=0;i--) {
-        double s = y.m[i][0];
-        for (int j=i+1;j<n;j++) s -= lu.U.m[i][j] * x.m[j][0];
+        T s = y.m[i][0];
+        for (int j=i+1;j<n;j++)
+            s -= lu.U.m[i][j] * x.m[j][0];
         x.m[i][0] = s / lu.U.m[i][i];
     }
 
     return x;
 }
 
+#endif
