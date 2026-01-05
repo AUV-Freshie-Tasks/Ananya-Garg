@@ -1,3 +1,4 @@
+
 #ifndef LU_H
 #define LU_H
 
@@ -5,12 +6,17 @@
 #include <vector>
 using namespace std;
 
+template<typename T>
 struct LU {
-    Matrix L, U;
-    vector<int> perm;   
+    Matrix<T> L, U;
+    vector<int> perm;
 };
 
-LU decomp(const Matrix& A);
-Matrix solveLU(const LU& lu, const Matrix& b);
+template<typename T>
+LU<T> decomp(const Matrix<T>& A);
 
+template<typename T>
+Matrix<T> solveLU(const LU<T>& lu, const Matrix<T>& b);
+
+#include "LU.tpp"
 #endif
