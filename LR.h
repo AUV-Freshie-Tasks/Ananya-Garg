@@ -1,18 +1,20 @@
-#ifndef LINEAR_REGRESSION_H
-#define LINEAR_REGRESSION_H
+#ifndef LR_H
+#define LR_H
 
 #include "matrix.h"
 
+template<typename T>
 class LinearRegression {
 public:
-    Matrix w;          // weights
-    double alpha;      // learning rate
-    int iters;         // number of iterations
+    Matrix<T> w;     // weights
+    T alpha;         // learning rate
+    int iters;       // iterations
 
-    LinearRegression(double lr = 0.01, int steps = 1000);
+    LinearRegression(T lr = 0.01, int steps = 1000);
 
-    void fit(const Matrix& X, const Matrix& y);
-    Matrix predict(const Matrix& X);
+    void fit(const Matrix<T>& X, const Matrix<T>& y);
+    Matrix<T> predict(const Matrix<T>& X);
 };
 
+#include "LR.tpp"
 #endif
