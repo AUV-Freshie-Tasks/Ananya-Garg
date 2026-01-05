@@ -8,6 +8,7 @@ Matrix::Matrix(int r, int c) : rows(r), cols(c), m(r, vector<double>(c, 0)) {}
 void Matrix::check(int r, int c) const {
     if (r < 0 || r >= rows || c < 0 || c >= cols)
         cout << "Out of bounds\n";
+        return;
 }
 
 double& Matrix::operator()(int r, int c) {
@@ -22,6 +23,11 @@ double Matrix::operator()(int r, int c) const {
 
 Matrix Matrix::operator+(const Matrix& o) const {
     
+    if (rows != o.rows || cols != o.cols) {
+    cout << "Size mismatch\n";
+    return Matrix();
+}
+    
     Matrix ans(rows, cols);
     for (int i=0;i<rows;i++)
         for (int j=0;j<cols;j++)
@@ -31,6 +37,11 @@ Matrix Matrix::operator+(const Matrix& o) const {
 }
 
 Matrix Matrix::operator*(const Matrix& o) const {
+
+    if (cols != o.rows) {
+    cout << "Size mismatch\n";
+    return Matrix();
+}
 
     Matrix ans(rows, o.cols);
     for (int i=0;i<rows;i++)
