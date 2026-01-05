@@ -19,9 +19,9 @@ public:
     Matrix operator*(const Matrix& o) const;
 
     Matrix T() const;
-    string key() const;
+    
 
-    //friend Matrix inverse(const Matrix& A);
+    friend Matrix inverse(const Matrix& A);
 
 private:
     void check(int r, int c) const;
