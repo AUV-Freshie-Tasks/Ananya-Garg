@@ -3,7 +3,11 @@
 using namespace std;
 
 Matrix inverse(const Matrix& A) {
-
+    //check for square matrix
+    if (A.rows != A.cols) {
+        cout << "Inverse only for square matrices\n";
+        return Matrix();
+    }
     //create a matrix of nX2n size of the form [ A | I ]
     int n = A.rows;
     Matrix aug(n, 2*n);
