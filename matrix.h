@@ -2,30 +2,32 @@
 #define MATRIX_H
 
 #include <vector>
-#include <stdexcept>
+#include <iostream>
 using namespace std;
 
+template<typename T>
 class Matrix {
+
 public:
     int rows, cols;
-    vector<vector<double>> m;
+    vector<vector<T>> m;
 
     Matrix(int r=0, int c=0);
 
-    double& operator()(int r, int c);
-    double  operator()(int r, int c) const;
+    T& operator()(int r, int c);
+    T operator()(int r, int c) const;
 
-    Matrix operator+(const Matrix& o) const;
-    Matrix operator*(const Matrix& o) const;
+    Matrix<T> operator+(const Matrix<T>& o) const;
+    Matrix<T> operator*(const Matrix<T>& o) const;
 
-    Matrix T() const;
-    
+    Matrix<T> T() const;
 
-    friend Matrix inverse(const Matrix& A);
+    template<typename U>
+    friend Matrix<U> inverse(const Matrix<U>& A);
 
 private:
     void check(int r, int c) const;
 };
 
+#include "matrix.tpp"
 #endif
-
