@@ -1,9 +1,10 @@
-#ifndef GAUSSJORDAN_H
-#define GAUSSJORDAN_H
+#ifndef GJ_H
+#define GJ_H
 
 #include "matrix.h"
 
-Matrix inverse(const Matrix& A);
+template<typename T>
+Matrix<T> inverse(const Matrix<T>& A);
 
+#include "GJ.tpp"
 #endif
-
