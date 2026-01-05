@@ -11,7 +11,6 @@ bool LRUCache::has(string key) {
 LU LRUCache::get(string key) {
    
     if (mp.find(key) == mp.end()) {
-        cout << key << endl;
         LU empty;
         return empty;
     }
@@ -53,3 +52,4 @@ void LRUCache::clear() {
     mp.clear();
     
 }
+
