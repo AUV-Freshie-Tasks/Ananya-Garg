@@ -13,16 +13,18 @@ class LRUCache {
 public:
     int cap;   
     LRUCache(int c = 5);
-
     bool has(string key);
-    LU get(string key);    
-    void put(string key, LU val);
+    LU<double> get(string key);
+    void put(string key, LU<double> val);
+
+    unordered_map<string, pair<LU<double>, list<string>::iterator>> mp;
 
     void clear();
 
 private:
     list<string> order;  
-    unordered_map<string, pair<LU, list<string>::iterator>> mp;
+    unordered_map<string, pair<LU<double>, list<string>::iterator>> mp;
 };
 
 #endif
+
