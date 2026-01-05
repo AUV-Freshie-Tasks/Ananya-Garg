@@ -3,11 +3,11 @@
 
 using namespace std;
 
-Matrix::Matrix(int r, int c) : rows(r), cols(c), m(r, vector<double>(c, 0.0)) {}
+Matrix::Matrix(int r, int c) : rows(r), cols(c), m(r, vector<double>(c, 0)) {}
 
 void Matrix::check(int r, int c) const {
     if (r < 0 || r >= rows || c < 0 || c >= cols)
-        throw out_of_range("Index out of range");
+        cout << "Out of bounds\n";
 }
 
 double& Matrix::operator()(int r, int c) {
@@ -21,9 +21,7 @@ double Matrix::operator()(int r, int c) const {
 }
 
 Matrix Matrix::operator+(const Matrix& o) const {
-    if (rows != o.rows || cols != o.cols)
-        throw invalid_argument("Size mismatch in +");
-
+    
     Matrix ans(rows, cols);
     for (int i=0;i<rows;i++)
         for (int j=0;j<cols;j++)
@@ -33,11 +31,8 @@ Matrix Matrix::operator+(const Matrix& o) const {
 }
 
 Matrix Matrix::operator*(const Matrix& o) const {
-    if (cols != o.rows)
-        throw invalid_argument("Size mismatch in *");
 
     Matrix ans(rows, o.cols);
-
     for (int i=0;i<rows;i++)
         for (int k=0;k<cols;k++)
             for (int j=0;j<o.cols;j++)
