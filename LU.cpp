@@ -4,7 +4,12 @@
 using namespace std;
 
 LU decomp(const Matrix& A) {
-
+   
+    if (A.rows != A.cols) {
+        cout << "LU needs square matrix\n";
+        return LU();
+    }
+    
     int n = A.rows;
     Matrix U = A;
     Matrix L(n,n);
@@ -37,7 +42,11 @@ LU decomp(const Matrix& A) {
         }
     }
 
-    return {L, U, p};
+    LU lu;
+    lu.L = L;
+    lu.U = U;
+    lu.perm = p;
+    return lu;
 }
 
 Matrix solveLU(const LU& lu, const Matrix& b) {
