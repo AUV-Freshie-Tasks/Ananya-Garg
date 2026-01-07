@@ -7,12 +7,12 @@
 
 using namespace std;
 
-// Constructor
+
 template<typename T>
 Matrix<T>::Matrix(int r, int c)
     : rows(r), cols(c), m(r, vector<T>(c, 0)) {}
 
-// Bounds check (same logic)
+
 template<typename T>
 void Matrix<T>::check(int r, int c) const {
     if (r < 0 || r >= rows || c < 0 || c >= cols)
@@ -20,21 +20,21 @@ void Matrix<T>::check(int r, int c) const {
         return;
 }
 
-// Element access (write)
+
 template<typename T>
 T& Matrix<T>::operator()(int r, int c) {
     check(r, c);
     return m[r][c];
 }
 
-// Element access (read)
+
 template<typename T>
 T Matrix<T>::operator()(int r, int c) const {
     check(r, c);
     return m[r][c];
 }
 
-// Matrix addition
+
 template<typename T>
 Matrix<T> Matrix<T>::operator+(const Matrix<T>& o) const {
 
@@ -51,7 +51,7 @@ Matrix<T> Matrix<T>::operator+(const Matrix<T>& o) const {
     return ans;
 }
 
-// Matrix multiplication
+
 template<typename T>
 Matrix<T> Matrix<T>::operator*(const Matrix<T>& o) const {
 
@@ -69,7 +69,7 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T>& o) const {
     return ans;
 }
 
-// Transpose
+
 template<typename T>
 Matrix<T> Matrix<T>::T() const {
     Matrix<T> t(cols, rows);
