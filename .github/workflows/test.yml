@@ -1,0 +1,23 @@
+name: C++ Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install compiler
+      run: sudo apt-get update && sudo apt-get install -y g++
+
+    - name: Build tests
+      run: |
+        g++ tests/test_matrix.cpp -std=c++17 -o test_matrix
+
+    - name: Run tests
+      run: ./test_matrix
+
