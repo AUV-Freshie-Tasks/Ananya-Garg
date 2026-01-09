@@ -26,3 +26,4 @@ PYBIND11_MODULE(pidlib, m) {
         .def("reset", &PID::reset)
         .def("out", &PID::out);
 }
+
