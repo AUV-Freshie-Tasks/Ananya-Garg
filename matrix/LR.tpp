@@ -28,7 +28,7 @@ void LinearRegression<T>::fit(const Matrix<T>& X, const Matrix<T>& y) {
         for (int i = 0; i < n; i++)
             err.m[i][0] = y_hat.m[i][0] - y.m[i][0];
 
-        Matrix<T> grad = X.T() * err;
+        Matrix<T> grad = X.transpose() * err;
 
         for (int i = 0; i < d; i++)
             grad.m[i][0] /= n;

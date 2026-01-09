@@ -23,7 +23,7 @@ public:
 
 private:
     list<string> order;  
-    unordered_map<string, pair<LU<double>, list<string>::iterator>> mp;
+    	
 };
 
 #endif

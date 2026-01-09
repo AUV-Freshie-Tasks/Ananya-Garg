@@ -71,7 +71,7 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T>& o) const {
 
 
 template<typename T>
-Matrix<T> Matrix<T>::T() const {
+Matrix<T> Matrix<T>:: transpose() const {
     Matrix<T> t(cols, rows);
     for (int i = 0; i < rows; i++)
         for (int j = 0; j < cols; j++)

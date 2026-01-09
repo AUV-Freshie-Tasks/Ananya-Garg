@@ -20,7 +20,8 @@ public:
     Matrix<T> operator+(const Matrix<T>& o) const;
     Matrix<T> operator*(const Matrix<T>& o) const;
 
-    Matrix<T> T() const;
+    Matrix<T> transpose() const;
+    
 
     template<typename U>
     friend Matrix<U> inverse(const Matrix<U>& A);
