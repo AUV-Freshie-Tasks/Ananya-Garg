@@ -1,0 +1,16 @@
+# Binaries
+*.out
+*.exe
+test_*
+*_demo
+
+# Python compiled
+*.so
+__pycache__/
+
+# macOS junk
+.DS_Store
+
+# Build folders
+build/
+
