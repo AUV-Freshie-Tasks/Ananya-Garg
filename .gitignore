@@ -1,5 +1,9 @@
 # Binaries
 *.out
+*.o
+*.so
+test_pid
+matrix_demo
 *.exe
 test_*
 *_demo
