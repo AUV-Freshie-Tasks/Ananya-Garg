@@ -8,6 +8,10 @@ matrix_demo
 test_*
 *_demo
 
+# compiled test binaries
+lr_test
+lru_test
+
 # Python compiled
 *.so
 __pycache__/
