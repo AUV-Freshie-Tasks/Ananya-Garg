@@ -17,7 +17,8 @@ jobs:
           g++ -std=c++17 tests/matrix_test.cpp -I./matrix -o matrix_test
           ./matrix_test
 
-      - name: Build and run PID tests
+      - name: PID tests
         run: |
-          g++ -std=c++17 tests/test_pid.cpp PID/p.cpp PID/i.cpp PID/d.cpp -o test_pid
+          g++ -std=c++17 tests/test_pid.cpp PID/p.cpp PID/i.cpp PID/d.cpp PID/pid.cpp -o test_pid
           ./test_pid
+
