@@ -23,7 +23,11 @@ int main() {
 
         double output = p_out + i_out + d_out;
 
-        measured += output * dt;   // simple simulated system
+        measured += output * dt;   
+        std::cout << step
+              << " measured=" << measured
+              << " output=" << output
+              << "\n";
         
     }
 
